@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Превью - Cabaret Black Hole</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Georgia', serif;
+            color: #ff1a1a;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Размытый блеклый фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('fon.png') center/cover no-repeat;
+            filter: blur(8px) brightness(0.4);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Философский текст */
+        .philosophy-text {
+            font-size: 2em;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 80px;
+            text-shadow: 2px 2px 6px #000, 0 0 20px rgba(255, 0, 0, 0.4);
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        /* Таймлайн с плеером */
+        .timeline-container {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.6), rgba(26, 0, 0, 0.8));
+            border: 3px solid #ff1a1a;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            animation: slideUp 1.5s ease-out;
+        }
+
+        .timeline-title {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Кастомный аудиоплеер */
+        .custom-player {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 30px;
+            border: 2px solid #8b0000;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            border: 2px solid #ff6666;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 26, 26, 0.6);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 26, 26, 0.9);
+        }
+
+        .play-btn.playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 20px solid #fff;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .pause-icon {
+            display: none;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            position: relative;
+        }
+
+        .pause-icon::before,
+        .pause-icon::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 20px;
+            background: #fff;
+            left: 0;
+        }
+
+        .pause-icon::before { left: 0; }
+        .pause-icon::after { left: 10px; }
+
+        .progress-container {
+            flex: 1;
+            background: rgba(139, 0, 0, 0.4);
+            height: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff1a1a, #ff6666);
+            width: 0%;
+            transition: width 0.1s;
+            box-shadow: 0 0 10px rgba(255, 26, 26, 0.8);
+        }
+
+        .time-display {
+            color: #ff6666;
+            font-size: 0.9em;
+            min-width: 100px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Контроль громкости */
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .volume-icon {
+            font-size: 1.5em;
+        }
+
+        .volume-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 6px;
+            background: rgba(139, 0, 0, 0.4);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #ff1a1a;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 26, 26, 0.8);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: rgba(139, 0, 0, 0.8);
+            color: #fff;
+            border: 2px solid #ff1a1a;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 26, 26, 0.9);
+            color: #000;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .philosophy-text {
+                font-size: 1.5em;
+            }
+            .player-controls {
+                flex-wrap: wrap;
+            }
+            .progress-container {
+                order: 3;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Философский текст -->
+        <div class="philosophy-text">
+            Путь в тысячу ли начинается с одного шага!<br>
+            Как и беспрецедентное действо с одной, только лишь, гениальной идеи.
+        </div>
+
+        <!-- Таймлайн с плеером -->
+        <div class="timeline-container">
+            <h1 class="timeline-title"> «first one song»</h1>
+            
+            <div class="custom-player">
+                <audio id="audioPlayer" src="Cabaret.mp3"></audio>
+                
+                <div class="player-controls">
+                    <button class="play-btn" id="playBtn">
+                        <span class="play-icon" id="playIcon"></span>
+                        <span class="pause-icon" id="pauseIcon"></span>
+                    </button>
+                    
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    
+                    <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+                </div>
+                
+                <div class="volume-control">
+                    <span class="volume-icon"></span>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
+        const timeDisplay = document.getElementById('timeDisplay');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        // Play/Pause
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                playBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                playBtn.classList.remove('playing');
+            }
+        });
+
+        // Обновление прогресса
+        audio.addEventListener('timeupdate', () => {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = percent + '%';
+            updateTimeDisplay();
+        });
+
+        // Клик по прогресс-бару
+        progressContainer.addEventListener('click', (e) => {
+            const width = progressContainer.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            audio.currentTime = (clickX / width) * duration;
+        });
+
+        // Форматирование времени
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function updateTimeDisplay() {
+            timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        }
+
+        // Громкость
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value / 100;
+        });
+
+        // Когда трек закончился
+        audio.addEventListener('ended', () => {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+            playBtn.classList.remove('playing');
+            progressBar.style.width = '0%';
+        });
+
+        // Установка начальной громкости
+        audio.volume = 0.7;
+    </script>
+</body>
+</html>
