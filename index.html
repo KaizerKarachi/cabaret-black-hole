@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cabaret Black Hole</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #0a0a0a; 
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color: #ff1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Боковое меню */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 200px;
+            background: linear-gradient(135deg, #1a0000, #0a0a0a);
+            padding: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border-right: 2px solid #8b0000;
+            box-shadow: 5px 0 20px rgba(139, 0, 0, 0.5);
+            z-index: 100;
+        }
+        .sidebar-btn {
+            display: block;
+            width: 160px;
+            padding: 12px 20px;
+            font-size: 1em;
+            background: linear-gradient(135deg, #8b0000, #5c0000);
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #ff1a1a;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px #000;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .sidebar-btn:hover {
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            transform: translateX(5px);
+        }
+
+        /* Основной контент */
+        .main-wrapper {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        h1 { 
+            font-size: 4em; 
+            margin-top: 30px;
+            text-shadow: 3px 3px 6px #000;
+            letter-spacing: 5px;
+        }
+        .stage {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        .curtains {
+            width: 100%;
+            border: 5px solid #8b0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+        .hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            max-width: 400px;
+            animation: spin 10s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+        }
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        p {
+            font-size: 1.5em;
+            color: #cc0000;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 40px;
+        }
+        .founders-btn {
+            display: block;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            background: linear-gradient(135deg, #8b0000, #ff1a1a);
+            color: #fff;
+            text-decoration: none;
+            border: 3px solid #ff1a1a;
+            border-radius: 10px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px #000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            transition: all 0.3s;
+        }
+        .founders-btn:hover {
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-wrapper {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Боковое меню -->
+    <div class="sidebar">
+        <a href="afisha.html" class="sidebar-btn">📰 Афиша</a>
+        <a href="preview.html" class="sidebar-btn">🎬 Превью</a>
+        <a href="posyl.html" class="sidebar-btn">💫 Посыл</a>
+        <a href="team.html" class="sidebar-btn">👥 Команда</a>
+        <a href="misc.html" class="sidebar-btn">🎭 Разное</a>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-wrapper">
+        <div class="container">
+            <h1>CABARET BLACK HOLE</h1>
+            
+            <div class="stage">
+                <img src="black.png" alt="Curtains" class="curtains">
+                <img src="hole.png" alt="Black Hole" class="hole">
+            </div>
+            
+            <p>Добро пожаловать, здесь гравитация уступит место искусству</p>
+            
+            <a href="otci.html" class="founders-btn">ОТЦЫ ОСНОВАТЕЛИ</a>
+            
+            <audio autoplay loop muted>
+                <source src="BhC.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
