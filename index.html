@@ -6,6 +6,15 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Cabaret Black Hole — здесь гравитация уступит место искусству">
     <title>Cabaret Black Hole</title>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem("cbh-theme") === "light") {
+                    document.documentElement.setAttribute("data-theme", "light");
+                }
+            } catch (e) {}
+        })();
+    </script>
     <link rel="stylesheet" href="css/site.css">
     <link rel="preload" as="image" href="black.png" fetchpriority="high">
 </head>
@@ -23,7 +32,7 @@
         <a href="posyl.html" class="sidebar-btn">Посыл</a>
         <a href="team.html" class="sidebar-btn">Команда</a>
         <a href="misc.html" class="sidebar-btn">Разное</a>
-        <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="false">Музыка: выкл</button>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false">Светлая тема</button>
     </nav>
 
     <div class="main-wrapper">
@@ -41,26 +50,6 @@
         </main>
     </div>
 
-    <script>
-        (function () {
-            var btn = document.getElementById("soundToggle");
-            var audio;
-            btn.addEventListener("click", function () {
-                if (!audio) {
-                    audio = new Audio("BhC.mp3");
-                    audio.loop = true;
-                }
-                if (audio.paused) {
-                    audio.play();
-                    btn.setAttribute("aria-pressed", "true");
-                    btn.textContent = "Музыка: вкл";
-                } else {
-                    audio.pause();
-                    btn.setAttribute("aria-pressed", "false");
-                    btn.textContent = "Музыка: выкл";
-                }
-            });
-        })();
-    </script>
+    <script src="js/theme.js" defer></script>
 </body>
 </html>

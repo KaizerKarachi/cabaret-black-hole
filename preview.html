@@ -6,10 +6,20 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Превью Cabaret Black Hole — first one song">
     <title>Превью — Cabaret Black Hole</title>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem("cbh-theme") === "light") {
+                    document.documentElement.setAttribute("data-theme", "light");
+                }
+            } catch (e) {}
+        })();
+    </script>
     <link rel="stylesheet" href="css/site.css">
 </head>
 <body class="has-photo-bg">
     <a class="skip-link" href="#content">К содержанию</a>
+    <button type="button" class="theme-toggle theme-toggle--float" data-theme-toggle aria-pressed="false">Светлая тема</button>
 
     <main id="content" class="container">
         <p class="philosophy-text">
@@ -49,5 +59,6 @@
     </main>
 
     <script src="js/player.js" defer></script>
+    <script src="js/theme.js" defer></script>
 </body>
 </html>
