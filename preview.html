@@ -11,6 +11,8 @@
             try {
                 if (localStorage.getItem("cbh-theme") === "light") {
                     document.documentElement.setAttribute("data-theme", "light");
+                    var meta = document.querySelector('meta[name="theme-color"]');
+                    if (meta) meta.setAttribute("content", "#eef0f2");
                 }
             } catch (e) {}
         })();
@@ -19,7 +21,6 @@
 </head>
 <body class="has-photo-bg">
     <a class="skip-link" href="#content">К содержанию</a>
-    <button type="button" class="theme-toggle theme-toggle--float" data-theme-toggle aria-pressed="false">Светлая тема</button>
 
     <main id="content" class="container">
         <p class="philosophy-text">
@@ -59,6 +60,5 @@
     </main>
 
     <script src="js/player.js" defer></script>
-    <script src="js/theme.js" defer></script>
 </body>
 </html>

@@ -11,6 +11,8 @@
             try {
                 if (localStorage.getItem("cbh-theme") === "light") {
                     document.documentElement.setAttribute("data-theme", "light");
+                    var meta = document.querySelector('meta[name="theme-color"]');
+                    if (meta) meta.setAttribute("content", "#eef0f2");
                 }
             } catch (e) {}
         })();
@@ -19,7 +21,6 @@
 </head>
 <body class="has-photo-bg">
     <a class="skip-link" href="#content">К содержанию</a>
-    <button type="button" class="theme-toggle theme-toggle--float" data-theme-toggle aria-pressed="false">Светлая тема</button>
 
     <main id="content" class="container">
         <h1>Cabaret Fazers</h1>
@@ -28,6 +29,5 @@
             <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
         </div>
     </main>
-    <script src="js/theme.js" defer></script>
 </body>
 </html>

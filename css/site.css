@@ -305,17 +305,6 @@ h1 {
     color: var(--gold);
 }
 
-.theme-toggle--float {
-    position: fixed;
-    top: calc(12px + var(--safe-top));
-    right: 12px;
-    z-index: 210;
-    width: auto;
-    min-width: 44px;
-    background: var(--bg);
-    box-shadow: var(--glow);
-}
-
 .main-wrapper {
     margin-left: var(--sidebar-w);
     padding: 16px 12px;
