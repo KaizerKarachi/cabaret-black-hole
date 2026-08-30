@@ -1,77 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Отцы Основатели</title>
-    <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Georgia', serif;
-            text-align: center;
-            color: #ff1a1a;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Размытый блеклый фон */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('fon.png') center/cover no-repeat;
-            filter: blur(8px) brightness(0.4);
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-        h1 { 
-            font-size: 3em; 
-            margin-top: 30px;
-            text-shadow: 3px 3px 6px #000;
-            letter-spacing: 3px;
-        }
-        img {
-            max-width: 90%;
-            border: 5px solid #8b0000;
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
-            margin: 30px 0;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            background: #8b0000;
-            color: #fff;
-            border: 2px solid #ff1a1a;
-            text-decoration: none;
-            border-radius: 5px;
-            font-family: 'Georgia', serif;
-            transition: all 0.3s;
-        }
-        .back-btn:hover {
-            background: #ff1a1a;
-            color: #000;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Отцы основатели Cabaret Black Hole">
+    <title>Отцы основатели — Cabaret Black Hole</title>
+    <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
-    <div class="container">
+<body class="has-photo-bg">
+    <a class="skip-link" href="#content">К содержанию</a>
+
+    <main id="content" class="container">
         <h1>Cabaret Fazers</h1>
-        <img src="HoleOtci.png" alt="Отцы Основатели">
-        <br>
-        <a href="index.html" class="back-btn">GO out</a>
-    </div>
+        <img src="HoleOtci.png" alt="Основатели Cabaret Black Hole на берегу" class="portrait" width="1280" height="628" loading="eager" decoding="async">
+        <div class="page-actions">
+            <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
+        </div>
+    </main>
 </body>
 </html>
