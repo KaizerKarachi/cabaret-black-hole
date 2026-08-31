@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Разное - Cabaret Black Hole</title>
+    <title>Посыл - Cabaret Black Hole</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -58,54 +58,42 @@
             min-height: 100vh;
         }
 
-        .contact-container {
-            text-align: center; max-width: 700px;
+        .message-container {
+            text-align: center; max-width: 800px;
             animation: fadeInUp 1.5s ease-out;
         }
 
         .page-title {
-            font-size: 3.5em; letter-spacing: 6px;
+            font-size: 3.5em; letter-spacing: 8px;
             text-transform: uppercase;
             text-shadow: 0 0 20px rgba(255, 26, 26, 0.6), 3px 3px 6px #000;
-            margin-bottom: 20px; color: #ff1a1a;
+            margin-bottom: 30px; color: #ff1a1a;
         }
 
-        .page-subtitle {
-            font-size: 1.2em; color: #ff9999;
-            line-height: 1.6; letter-spacing: 1px;
-            margin-bottom: 50px; font-style: italic;
-            max-width: 650px; margin-left: auto; margin-right: auto;
-        }
-
-        .contact-block {
-            background: linear-gradient(135deg, rgba(139, 0, 0, 0.4), rgba(26, 0, 0, 0.6));
-            border: 2px solid #8b0000; border-radius: 15px;
-            padding: 35px; margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-            transition: all 0.4s ease;
-        }
-        .contact-block:hover {
-            box-shadow: 0 0 50px rgba(255, 26, 26, 0.6);
-            transform: translateY(-5px); border-color: #ff1a1a;
-        }
-
-        .contact-icon { font-size: 3em; margin-bottom: 15px; }
-        .contact-label {
-            font-size: 1.1em; color: #ff6666;
-            letter-spacing: 3px; text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-        .contact-value {
-            font-size: 1.3em; color: #fff; text-decoration: none;
-            display: inline-block; padding: 12px 25px;
-            border: 1px solid #ff1a1a; border-radius: 5px;
-            transition: all 0.3s; letter-spacing: 1px;
-        }
-        .contact-value:hover {
-            background: rgba(255, 26, 26, 0.2);
-            box-shadow: 0 0 20px rgba(255, 26, 26, 0.4);
+        .manifesto-text {
+            font-size: 1.4em;
             color: #ffcccc;
+            line-height: 1.8;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+            font-style: italic;
+            text-shadow: 1px 1px 4px #000;
+        }
+
+        .manifesto-text strong {
+            color: #ff1a1a;
+            font-style: normal;
+        }
+
+        .cancan-image {
+            max-width: 100%;
+            width: 600px;
+            border: 3px solid #8b0000;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.4), 0 0 80px rgba(139, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 40px;
+            filter: sepia(20%) contrast(1.1);
         }
 
         .back-btn {
@@ -126,11 +114,17 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         @media (max-width: 768px) {
             .sidebar { display: none; }
             .main-wrapper { margin-left: 0; padding: 40px 20px; }
-            .page-title { font-size: 2.5em; }
-            .page-subtitle { font-size: 1.1em; }
+            .page-title { font-size: 2.5em; letter-spacing: 4px; }
+            .manifesto-text { font-size: 1.2em; }
+            .cancan-image { width: 100%; }
         }
     </style>
 </head>
@@ -144,31 +138,18 @@
     </div>
 
     <div class="main-wrapper">
-        <div class="contact-container">
-            <h1 class="page-title">Разное</h1>
+        <div class="message-container">
+            <h1 class="page-title">Посыл</h1>
             
-            <p class="page-subtitle">
-                Дорогие соратники и ценители искусства!<br>
-                Этот канал открыт исключительно для вашего фидбэка. 
-                Если у вас есть вопросы, смелые идеи или желание поделиться впечатлениями от нашего действа — мы внимательно читаем каждое сообщение.Чуточка Кабаре есть в каждом.
+            <p class="manifesto-text">
+                Здесь время замирает, а реальность остаётся за порогом.<br><br>
+                Наш посыл прост и бескомпромиссен: мы создаём пространство, где <strong>каждому гостю будет по-настоящему тепло</strong>.<br><br>
+                Погрузитесь в гипнотический ритм бурлеска и позвольте себе честные эмоциональные качели. Оставьте суету и круговерть внешнего мира за дверью.<br><br>
+                Добро пожаловать в <strong>Cabaret Black Hole</strong> — ваше убежище от обыденности.
             </p>
 
-            <div class="contact-block">
-                <div class="contact-icon">✈️</div>
-                <div class="contact-label">Telegram</div>
-                <a href="https://t.me/ivan_bogdanov_art" class="contact-value" target="_blank">
-                    @ivan_bogdanov_art
-                </a>
-            </div>
-
-            <div class="contact-block">
-                <div class="contact-icon">✉️</div>
-                <div class="contact-label">Электронная почта</div>
-                <a href="mailto:swonhaden@gmail.com" class="contact-value">
-                    swonhaden@gmail.com
-                </a>
-            </div>
-
+            <img src="cancan.png" alt="Бурлеск Канкан" class="cancan-image">
+            
             <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
         </div>
     </div>
