@@ -59,7 +59,7 @@
         }
 
         .message-container {
-            text-align: center; max-width: 800px;
+            text-align: center; max-width: 850px;
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -70,34 +70,66 @@
             margin-bottom: 30px; color: #ff1a1a;
         }
 
-        .manifesto-text {
-            font-size: 1.4em;
-            color: #ffcccc;
-            line-height: 1.8;
+        .intro-text {
+            font-size: 1.3em;
+            color: #ff9999;
+            line-height: 1.7;
             letter-spacing: 1px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             font-style: italic;
-            text-shadow: 1px 1px 4px #000;
-        }
-
-        .manifesto-text strong {
-            color: #ff1a1a;
-            font-style: normal;
         }
 
         .cancan-image {
             max-width: 100%;
-            width: 600px;
+            width: 650px;
             border: 3px solid #8b0000;
             border-radius: 10px;
             box-shadow: 0 0 40px rgba(255, 0, 0, 0.4), 0 0 80px rgba(139, 0, 0, 0.2);
             animation: float 6s ease-in-out infinite;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             filter: sepia(20%) contrast(1.1);
         }
 
+        .manifesto-section {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.5), rgba(26, 0, 0, 0.7));
+            border: 2px solid #8b0000;
+            border-radius: 15px;
+            padding: 50px 40px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+        }
+
+        .manifesto-text {
+            font-size: 1.25em;
+            color: #ffcccc;
+            line-height: 1.9;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .manifesto-text p {
+            margin-bottom: 25px;
+        }
+
+        .manifesto-text strong {
+            color: #ff1a1a;
+            font-weight: bold;
+        }
+
+        .manifesto-text .highlight {
+            color: #ff6666;
+            font-size: 1.1em;
+            display: block;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid #ff1a1a;
+            background: rgba(255, 26, 26, 0.1);
+            padding-left: 25px;
+        }
+
         .back-btn {
-            display: inline-block; margin-top: 40px;
+            display: inline-block; margin-top: 50px;
             padding: 15px 40px; font-size: 1.1em;
             background: rgba(139, 0, 0, 0.6); color: #fff;
             border: 2px solid #ff1a1a; text-decoration: none;
@@ -123,8 +155,9 @@
             .sidebar { display: none; }
             .main-wrapper { margin-left: 0; padding: 40px 20px; }
             .page-title { font-size: 2.5em; letter-spacing: 4px; }
-            .manifesto-text { font-size: 1.2em; }
             .cancan-image { width: 100%; }
+            .manifesto-section { padding: 35px 25px; }
+            .manifesto-text { font-size: 1.1em; text-align: left; }
         }
     </style>
 </head>
@@ -141,14 +174,62 @@
         <div class="message-container">
             <h1 class="page-title">Посыл</h1>
             
-            <p class="manifesto-text">
-                Здесь время замирает, а реальность остаётся за порогом.<br><br>
-                Наш посыл прост и бескомпромиссен: мы создаём пространство, где <strong>каждому гостю будет по-настоящему тепло</strong>.<br><br>
-                Погрузитесь в гипнотический ритм бурлеска и позвольте себе честные эмоциональные качели. Оставьте суету и круговерть внешнего мира за дверью.<br><br>
-                Добро пожаловать в <strong>Cabaret Black Hole</strong> — ваше убежище от обыденности.
+            <p class="intro-text">
+                Здесь время замирает, а реальность остаётся за порогом...
             </p>
 
             <img src="cancan.png" alt="Бурлеск Канкан" class="cancan-image">
+            
+            <div class="manifesto-section">
+                <div class="manifesto-text">
+                    <p>
+                        <strong>Cabaret Black Hole</strong> — это больше, чем просто место для спектаклей. 
+                        Это живое пространство, созданное для тех, кто ищет нечто большее, чем просто развлечение.
+                    </p>
+                    
+                    <p>
+                        Мы верим, что искусство рождается во встрече. Встрече разных миров, идей, темпераментов. 
+                        Здесь за одним столом могут оказаться признанные мастера сцены и те, кто только делает 
+                        первые шаги в творчестве. И это прекрасно.
+                    </p>
+
+                    <span class="highlight">
+                        Наша миссия — создать атмосферу тепла и принятия, 
+                        где каждый гость чувствует себя частью чего-то большего.
+                    </span>
+
+                    <p>
+                        <strong>Что происходит в нашем кабаре?</strong><br>
+                        Всё, что выходит за рамки обыденности:
+                    </p>
+
+                    <p>
+                        🎭 <strong>Антрепризы</strong> — камерные спектакли, где каждый зритель становится 
+                        соучастником действа, а не просто наблюдателем.
+                    </p>
+
+                    <p>
+                        🔬 <strong>Лаборатории</strong> — творческие эксперименты, где рождаются новые формы, 
+                        идеи и смыслы. Здесь нет правильных ответов — только поиск и свобода самовыражения.
+                    </p>
+
+                    <p>
+                        💫 <strong>Обмен идеями</strong> — дискуссии, перформансы, импровизации. 
+                        Мы открываем двери для всех, у кого есть что сказать миру.
+                    </p>
+
+                    <p>
+                        Cabaret Black Hole — это место, где можно <strong>оставить за порогом</strong> 
+                        суету, стереотипы и страхи. Где можно позволить себе быть собой. Где искусство 
+                        перестает быть чем-то далеким и недосягаемым — оно становится частью тебя.
+                    </p>
+
+                    <p style="text-align: center; margin-top: 40px; font-size: 1.1em; color: #ff6666;">
+                        <em>Добро пожаловать в наше кабаре.<br>
+                        Здесь каждый найдет что-то свое.</em>
+                    </p>
+                </div>
+            </div>
             
             <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
         </div>
