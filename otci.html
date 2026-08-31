@@ -6,17 +6,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Отцы основатели Cabaret Black Hole">
     <title>Отцы основатели — Cabaret Black Hole</title>
-    <script>
-        (function () {
-            try {
-                if (localStorage.getItem("cbh-theme") === "light") {
-                    document.documentElement.setAttribute("data-theme", "light");
-                    var meta = document.querySelector('meta[name="theme-color"]');
-                    if (meta) meta.setAttribute("content", "#eef0f2");
-                }
-            } catch (e) {}
-        })();
-    </script>
+    <script src="js/theme-boot.js"></script>
     <link rel="stylesheet" href="css/site.css">
 </head>
 <body class="has-photo-bg">

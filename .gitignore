@@ -1,4 +1,7 @@
 chat-server/bin/
 chat-server/obj/
+chat-server/publish/
 chat-server/users.json
+chat-server/chat.log
 *.user
+index.nginx-debian.html

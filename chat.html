@@ -6,22 +6,15 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Чат Cabaret Black Hole">
     <title>Чат — Cabaret Black Hole</title>
-    <script>
-        (function () {
-            try {
-                if (localStorage.getItem("cbh-theme") === "light") {
-                    document.documentElement.setAttribute("data-theme", "light");
-                    var meta = document.querySelector('meta[name="theme-color"]');
-                    if (meta) meta.setAttribute("content", "#eef0f2");
-                }
-            } catch (e) {}
-        })();
-    </script>
+    <script src="js/theme-boot.js"></script>
     <link rel="stylesheet" href="css/site.css">
 </head>
-<body class="has-photo-bg">
+<body class="has-photo-bg" data-page="chat">
     <a class="skip-link" href="#content">К содержанию</a>
+    <div data-site-nav></div>
+    <script src="js/nav.js"></script>
 
+    <div class="main-wrapper">
     <main id="content" class="container">
         <section class="chat-panel">
             <h1>Чат кабаре</h1>
@@ -55,6 +48,7 @@
             <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
         </div>
     </main>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.7/dist/browser/signalr.min.js" defer></script>
     <script src="js/chat.js" defer></script>

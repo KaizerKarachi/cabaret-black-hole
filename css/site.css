@@ -35,6 +35,10 @@
     --back-hover-fg: #111;
     --philosophy-shadow: 2px 2px 6px #000, 0 0 20px rgba(255, 0, 0, 0.4);
     --overlay: rgba(0, 0, 0, 0.55);
+    --sidebar-bg: #0a0a0a;
+    --sidebar-net: url("../net.jpg") center / 320px auto repeat;
+    --sidebar-net-filter: contrast(1.65) brightness(0.62) saturate(0.8);
+    --sidebar-net-blend: lighten;
     --radius: 8px;
     --sidebar-w: 220px;
     --safe-top: env(safe-area-inset-top, 0px);
@@ -78,6 +82,10 @@ html[data-theme="light"] {
     --back-hover-fg: #f7f8fa;
     --philosophy-shadow: none;
     --overlay: rgba(44, 46, 51, 0.28);
+    --sidebar-bg: #e8e9ec;
+    --sidebar-net: url("../net.jpg") center / 320px auto repeat;
+    --sidebar-net-filter: contrast(1.25) brightness(1.08) grayscale(0.2);
+    --sidebar-net-blend: multiply;
 }
 
 *,
@@ -268,10 +276,27 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(165deg, var(--bg-deep), var(--bg));
+    background: var(--sidebar-bg);
+    isolation: isolate;
     border-right: 2px solid var(--red-dark);
     box-shadow: var(--sidebar-shadow);
     z-index: 100;
+}
+
+.sidebar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--sidebar-net);
+    filter: var(--sidebar-net-filter);
+    mix-blend-mode: var(--sidebar-net-blend);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sidebar > * {
+    position: relative;
+    z-index: 1;
 }
 
 .sidebar-brand {
