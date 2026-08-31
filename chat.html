@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Чат Cabaret Black Hole">
+    <title>Чат — Cabaret Black Hole</title>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem("cbh-theme") === "light") {
+                    document.documentElement.setAttribute("data-theme", "light");
+                    var meta = document.querySelector('meta[name="theme-color"]');
+                    if (meta) meta.setAttribute("content", "#eef0f2");
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body class="has-photo-bg">
+    <a class="skip-link" href="#content">К содержанию</a>
+
+    <main id="content" class="container">
+        <section class="chat-panel">
+            <h1>Чат кабаре</h1>
+            <p class="chat-lead">Вход только по логину, который выдаёт хозяин.</p>
+
+            <div id="chatGate" class="chat-gate is-open">
+                <form id="loginForm" class="chat-form">
+                    <label for="chatUser">Логин</label>
+                    <input id="chatUser" name="username" autocomplete="username" required>
+                    <label for="chatPass">Пароль</label>
+                    <input id="chatPass" name="password" type="password" autocomplete="current-password" required>
+                    <button type="submit" class="back-btn" style="margin-top: 8px;">Войти</button>
+                    <p class="chat-error" id="loginError" role="alert"></p>
+                </form>
+            </div>
+
+            <div id="chatRoom" class="chat-room">
+                <div class="chat-meta">
+                    <span id="chatWho"></span>
+                    <button type="button" class="back-btn" id="logoutBtn" style="margin-top: 0;">Выйти</button>
+                </div>
+                <div class="chat-log" id="chatLog" aria-live="polite"></div>
+                <form id="sendForm" class="chat-compose">
+                    <input id="chatText" maxlength="500" autocomplete="off" placeholder="Сообщение">
+                    <button type="submit" class="back-btn" style="margin-top: 0;">Отправить</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="page-actions">
+            <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.7/dist/browser/signalr.min.js" defer></script>
+    <script src="js/chat.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Афиша - Ленивый Сфинкс</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Georgia', serif;
+            color: #ff1a1a;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Размытый блеклый фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('fon.png') center/cover no-repeat;
+            filter: blur(8px) brightness(0.3);
+            z-index: -1;
+        }
+
+        /* Боковое меню (как на главной) */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 200px;
+            background: linear-gradient(135deg, #1a0000, #0a0a0a);
+            padding: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border-right: 2px solid #8b0000;
+            box-shadow: 5px 0 20px rgba(139, 0, 0, 0.5);
+            z-index: 100;
+        }
+        .sidebar-btn {
+            display: block;
+            width: 160px;
+            padding: 12px 20px;
+            font-size: 1em;
+            background: linear-gradient(135deg, #8b0000, #5c0000);
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #ff1a1a;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px #000;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .sidebar-btn:hover {
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            transform: translateX(5px);
+        }
+
+        /* Основной контент */
+        .main-wrapper {
+            margin-left: 220px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .poster-container {
+            text-align: center;
+            max-width: 700px;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .poster-title {
+            font-size: 4em;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 26, 26, 0.6), 3px 3px 6px #000;
+            margin-bottom: 10px;
+            color: #ff1a1a;
+        }
+
+        .poster-subtitle {
+            font-size: 1.5em;
+            color: #cc8888;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .sphinx-image {
+            max-width: 100%;
+            width: 500px;
+            border: 4px solid #8b0000;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4), 0 0 100px rgba(139, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 40px;
+        }
+
+        .teaser-text {
+            font-size: 1.3em;
+            color: #ff6666;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 26, 26, 0.3);
+            border-bottom: 1px solid rgba(255, 26, 26, 0.3);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: rgba(139, 0, 0, 0.6);
+            color: #fff;
+            border: 2px solid #ff1a1a;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .back-btn:hover {
+            background: rgba(255, 26, 26, 0.9);
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 26, 26, 0.6);
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-wrapper {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .poster-title {
+                font-size: 2.5em;
+                letter-spacing: 4px;
+            }
+            .sphinx-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Боковое меню -->
+    <div class="sidebar">
+        <a href="afisha.html" class="sidebar-btn">📰 Афиша</a>
+        <a href="preview.html" class="sidebar-btn">🎬 Превью</a>
+        <a href="posyl.html" class="sidebar-btn">💫 Посыл</a>
+        <a href="team.html" class="sidebar-btn">👥 Команда</a>
+        <a href="misc.html" class="sidebar-btn">🎭 Разное</a>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-wrapper">
+        <div class="poster-container">
+            <h1 class="poster-title">ЛЕНИВЫЙ СФИНКС</h1>
+            <p class="poster-subtitle">Cabaret Black Hole представляет</p>
+            
+            <img src="sphinx.png" alt="Ленивый Сфинкс" class="sphinx-image">
+            
+            <div class="teaser-text">
+                Скоро на сцене.<br>
+                Следите за обновлениями.
+            </div>
+            
+            <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
+        </div>
+    </div>
+</body>
+</html>

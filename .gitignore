@@ -1,0 +1,4 @@
+chat-server/bin/
+chat-server/obj/
+chat-server/users.json
+*.user
