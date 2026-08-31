@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Команда - Cabaret Black Hole</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            font-family: 'Georgia', serif;
+            color: #ff1a1a;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('fon.png') center/cover no-repeat;
+            filter: blur(8px) brightness(0.3);
+            z-index: -1;
+        }
+
+        .sidebar {
+            position: fixed; left: 0; top: 0;
+            height: 100vh; width: 200px;
+            background: linear-gradient(135deg, #1a0000, #0a0a0a);
+            padding: 30px 0;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 15px;
+            border-right: 2px solid #8b0000;
+            box-shadow: 5px 0 20px rgba(139, 0, 0, 0.5);
+            z-index: 100;
+        }
+        .sidebar-btn {
+            display: block; width: 160px; padding: 12px 20px;
+            font-size: 1em;
+            background: linear-gradient(135deg, #8b0000, #5c0000);
+            color: #fff; text-decoration: none;
+            border: 2px solid #ff1a1a; border-radius: 5px;
+            font-family: 'Georgia', serif; letter-spacing: 1px;
+            text-shadow: 1px 1px 2px #000; transition: all 0.3s;
+            text-align: center;
+        }
+        .sidebar-btn:hover {
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            transform: translateX(5px);
+        }
+
+        .main-wrapper {
+            margin-left: 220px; padding: 60px 40px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh;
+        }
+
+        .team-container {
+            text-align: center; max-width: 800px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .page-title {
+            font-size: 3.5em; letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 26, 26, 0.6), 3px 3px 6px #000;
+            margin-bottom: 20px; color: #ff1a1a;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #8b0000, #5c0000);
+            border: 2px solid #ff1a1a;
+            border-radius: 25px;
+            font-size: 1.1em;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 50px;
+            animation: pulse 2s infinite;
+        }
+
+        .team-image {
+            max-width: 100%;
+            width: 700px;
+            border: 4px solid #8b0000;
+            border-radius: 10px;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.5), 0 0 100px rgba(139, 0, 0, 0.3);
+            margin-bottom: 50px;
+            filter: sepia(15%) contrast(1.15);
+        }
+
+        .formation-text {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.5), rgba(26, 0, 0, 0.7));
+            border: 2px solid #8b0000;
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+        }
+
+        .formation-text p {
+            font-size: 1.2em;
+            color: #ffcccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .formation-text .highlight {
+            color: #ff6666;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block; margin-top: 40px;
+            padding: 15px 40px; font-size: 1.1em;
+            background: rgba(139, 0, 0, 0.6); color: #fff;
+            border: 2px solid #ff1a1a; text-decoration: none;
+            border-radius: 5px; font-family: 'Georgia', serif;
+            transition: all 0.3s; backdrop-filter: blur(5px);
+        }
+        .back-btn:hover {
+            background: rgba(255, 26, 26, 0.9); color: #000;
+            box-shadow: 0 0 20px rgba(255, 26, 26, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-wrapper { margin-left: 0; padding: 40px 20px; }
+            .page-title { font-size: 2.5em; letter-spacing: 4px; }
+            .team-image { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="afisha.html" class="sidebar-btn">📰 Афиша</a>
+        <a href="preview.html" class="sidebar-btn">🎬 Превью</a>
+        <a href="posyl.html" class="sidebar-btn">💫 Посыл</a>
+        <a href="team.html" class="sidebar-btn">👥 Команда</a>
+        <a href="misc.html" class="sidebar-btn">🎭 Разное</a>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="team-container">
+            <h1 class="page-title">Команда</h1>
+            
+            <div class="status-badge">⚡ Идет формирование </div>
+
+            <img src="team.png" alt="Команда Cabaret Black Hole" class="team-image">
+            
+            <div class="formation-text">
+                <p>
+                    <span class="highlight">Cabaret Black Hole</span> находится в стадии активного становления. 
+                    Мы собираем команду единомышленников — тех, кто готов создавать нечто большее, 
+                    чем просто спектакли.
+                </p>
+                <p>
+                    Нам нужны талантливые люди всех направлений: актеры, режиссеры, художники, 
+                    музыканты, организаторы. Те, кто не боится экспериментов и готов выходить 
+                    за рамки привычного.
+                </p>
+                <p style="text-align: center; margin-top: 30px; font-size: 1.1em; color: #ff9999;">
+                    <em>Если вы чувствуете, что вам с нами по пути — напишите нам.<br>
+                    Мы всегда открыты для новых лиц и свежих идей.</em>
+                </p>
+            </div>
+            
+            <a href="index.html" class="back-btn">← Вернуться в кабаре</a>
+        </div>
+    </div>
+</body>
+</html>
