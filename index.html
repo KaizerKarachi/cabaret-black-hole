@@ -1,58 +1,141 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Cabaret Black Hole — здесь гравитация уступит место искусству">
     <title>Cabaret Black Hole</title>
-    <script>
-        (function () {
-            try {
-                if (localStorage.getItem("cbh-theme") === "light") {
-                    document.documentElement.setAttribute("data-theme", "light");
-                    var meta = document.querySelector('meta[name="theme-color"]');
-                    if (meta) meta.setAttribute("content", "#eef0f2");
-                }
-            } catch (e) {}
-        })();
-    </script>
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="preload" as="image" href="black.png" fetchpriority="high">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            font-family: 'Georgia', serif;
+            color: #ff1a1a;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Общий размытый фон сайта */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('fon.png') center/cover no-repeat;
+            filter: blur(8px) brightness(0.3);
+            z-index: -1;
+        }
+
+        /* Левое меню с золотой сеткой */
+        .sidebar {
+            position: fixed; left: 0; top: 0;
+            height: 100vh; width: 220px;
+            /* Сначала идет темный градиент, а поверх него — текстура сетки */
+            background: linear-gradient(135deg, rgba(26, 0, 0, 0.92), rgba(10, 10, 10, 0.95)), url('net.png') center/cover no-repeat;
+            padding: 40px 0;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 15px;
+            border-right: 2px solid #8b0000;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.8);
+            z-index: 100;
+        }
+
+        .sidebar-btn {
+            display: block; width: 180px; padding: 14px 20px;
+            font-size: 1.05em;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(40, 0, 0, 0.9));
+            color: #fff; text-decoration: none;
+            border: 1px solid #ff1a1a; border-radius: 6px;
+            font-family: 'Georgia', serif; letter-spacing: 1px;
+            text-shadow: 1px 1px 3px #000; transition: all 0.3s;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+        .sidebar-btn:hover {
+            background: linear-gradient(135deg, #ff1a1a, #8b0000);
+            box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
+            transform: translateX(5px) scale(1.02);
+            border-color: #fff;
+        }
+
+        /* Основной контент по центру */
+        .main-wrapper {
+            margin-left: 220px; 
+            padding: 60px 40px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 4.5em; letter-spacing: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255, 26, 26, 0.7), 4px 4px 8px #000;
+            margin-bottom: 20px; color: #ff1a1a;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em; color: #ff9999;
+            letter-spacing: 4px; font-style: italic;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 5px #000;
+            animation: fadeIn 3s ease-out;
+        }
+
+        .welcome-text {
+            max-width: 600px;
+            font-size: 1.2em; line-height: 1.8;
+            color: #ffcccc;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px; border-radius: 10px;
+            border: 1px solid #8b0000;
+            backdrop-filter: blur(5px);
+            animation: slideUp 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптивность для телефонов */
+        @media (max-width: 768px) {
+            .sidebar { 
+                position: relative; height: auto; width: 100%; 
+                flex-direction: row; flex-wrap: wrap; 
+                justify-content: center; padding: 20px;
+            }
+            .sidebar-btn { width: 140px; padding: 10px; font-size: 0.9em; }
+            .main-wrapper { margin-left: 0; padding: 40px 20px; }
+            .hero-title { font-size: 2.5em; letter-spacing: 5px; }
+        }
+    </style>
 </head>
 <body>
-    <a class="skip-link" href="#content">К содержанию</a>
-
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
-    <label for="nav-toggle" class="nav-overlay"></label>
-    <label for="nav-toggle" class="nav-toggle-btn" aria-label="Открыть меню">☰</label>
-
-    <nav class="sidebar" aria-label="Разделы кабаре">
-        <p class="sidebar-brand">Black Hole</p>
-        <a href="afisha.html" class="sidebar-btn">Афиша</a>
-        <a href="preview.html" class="sidebar-btn">Превью</a>
-        <a href="posyl.html" class="sidebar-btn">Посыл</a>
-        <a href="team.html" class="sidebar-btn">Команда</a>
-        <a href="misc.html" class="sidebar-btn">Разное</a>
-        <a href="chat.html" class="sidebar-btn">Чат</a>
-        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false">Светлая тема</button>
-    </nav>
-
-    <div class="main-wrapper">
-        <main id="content" class="container">
-            <h1>CABARET BLACK HOLE</h1>
-
-            <div class="stage">
-                <img src="black.png" alt="Сцена кабаре с красным занавесом" class="curtains" width="1664" height="928" fetchpriority="high" decoding="async">
-                <img src="hole.png" alt="" class="hole" width="1664" height="928" decoding="async">
-            </div>
-
-            <p class="lead">Добро пожаловать, здесь гравитация уступит место искусству</p>
-
-            <a href="otci.html" class="founders-btn">Отцы основатели</a>
-        </main>
+    <!-- Боковое меню -->
+    <div class="sidebar">
+        <a href="afisha.html" class="sidebar-btn"> Афиша</a>
+        <a href="preview.html" class="sidebar-btn">🎬 Превью</a>
+        <a href="posyl.html" class="sidebar-btn">💫 Посыл</a>
+        <a href="team.html" class="sidebar-btn">👥 Команда</a>
+        <a href="misc.html" class="sidebar-btn">🎭 Разное</a>
     </div>
 
-    <script src="js/theme.js" defer></script>
+    <!-- Главный экран -->
+    <div class="main-wrapper">
+        <h1 class="hero-title">Cabaret Black Hole</h1>
+        <p class="hero-subtitle">Искусство, поглощающее реальность</p>
+        
+        <div class="welcome-text">
+            Добро пожаловать в пространство, где время замирает, 
+            а границы дозволенного размываются. Выберите раздел, 
+            чтобы начать погружение.
+        </div>
+    </div>
 </body>
 </html>
